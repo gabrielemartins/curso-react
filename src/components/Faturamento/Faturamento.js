@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import { exibirFaturamento } from '../../services/faturamento';
 
 class Faturamento extends Component {
 
@@ -10,8 +11,7 @@ class Faturamento extends Component {
     }
 
     componentDidMount(){
-        fetch('http://devup.com.br/php/api-dashboard/api/faturamento')
-.then(result => result.json().then(data => this.setState(data)))
+        exibirFaturamento().then(data => this.setState(data))
     }
 
     render(){
@@ -30,7 +30,7 @@ class Faturamento extends Component {
                             <thead>
                                 <tr>
                                     <th>Descrição</th>
-                                    <th className="text-right">Valor</th>
+                                    <th>Valor</th>
                                 </tr>
                             </thead>
                             
@@ -40,7 +40,7 @@ class Faturamento extends Component {
                                         return (
                                             <tr key={indice}>
                                             <td>{item.descricao}</td>
-                                            <td className="text-right">
+                                            <td>
                                                 {item.valor.toLocaleString("pt-br", {style: "currency", currency : "BRL"})}
                                             </td>
                                         </tr>

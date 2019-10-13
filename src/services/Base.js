@@ -1,0 +1,1 @@
+export const URL_MYAPI = "http://devup.com.br/php/api-dashboard/api";
